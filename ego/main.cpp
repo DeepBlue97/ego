@@ -5,6 +5,8 @@
 //
 int main()
 {
+    using namespace ego;
+
     std::vector<float> data1 = {82,  42, 151, 183, 115,  57, 146, 136, 122};
     Tensor<float> tensor1(data1);
 

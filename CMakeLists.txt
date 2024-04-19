@@ -8,4 +8,11 @@ include_directories(ego)
 add_executable(ego
         ego/Tensor.cpp
         ego/Tensor.h
-        ego/main.cpp)
+        ego/main.cpp
+        ego/Linear.cpp
+        ego/Sigmoid.h
+        ego/Sigmoid.cpp
+        ego/Softmax.h
+        ego/Softmax.cpp
+        ego/ReLU.h
+        ego/ReLU.cpp)
