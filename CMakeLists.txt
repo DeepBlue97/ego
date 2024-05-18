@@ -15,4 +15,8 @@ add_executable(ego
         ego/Softmax.h
         ego/Softmax.cpp
         ego/ReLU.h
-        ego/ReLU.cpp)
+        ego/ReLU.cpp
+        ego/random.h
+        ego/random.cpp
+        ego/Conv.h
+        ego/Conv.cpp)
