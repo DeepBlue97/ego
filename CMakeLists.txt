@@ -3,7 +3,6 @@ project(ego)
 
 set(CMAKE_CXX_STANDARD 20)
 
-
 include_directories(ego)
 
 add_executable(ego
