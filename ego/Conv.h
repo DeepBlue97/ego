@@ -30,13 +30,11 @@ namespace ego
 //            Tensor<T> padded;
 //
 //            Tensor<T> target;
-//
 
-
-//            unsigned int in_channel;
-//            unsigned int out_channel;
-//            unsigned int kernel_size;
-//            unsigned int padding;
+           unsigned int in_channel;
+           unsigned int out_channel;
+           unsigned int kernel_size;
+           unsigned int padding;
 
 //            Tensor<T> forward(Tensor<T> x)
 //            {

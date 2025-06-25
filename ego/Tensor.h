@@ -143,7 +143,7 @@ namespace ego
 
         Tensor<T> transpose(unsigned int a, unsigned int b)
         {
-            std::vector<unsigned int> target_shape = shape;
+            std::vector<std::size_t> target_shape = shape;
 
             target_shape.at(a) = shape.at(b);
             target_shape.at(b) = shape.at(a);
