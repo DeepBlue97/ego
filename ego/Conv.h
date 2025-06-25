@@ -8,13 +8,14 @@
 #include "Tensor.h"
 //#include "cstdlib"
 #include <cmath>
+
 namespace ego
 {
     namespace nn
     {
         template<typename T>
         class Conv2d {
-            Conv2d(unsigned int in_channel, unsigned int out_channel, unsigned int kernel_size, unsigned int padding)
+            Conv2d(std::size_t in_channel, std::size_t out_channel, std::size_t kernel_size, std::size_t padding)
             {
                 this->in_channel = in_channel;
                 this->out_channel = out_channel;
@@ -31,10 +32,10 @@ namespace ego
 //
 //            Tensor<T> target;
 
-           unsigned int in_channel;
-           unsigned int out_channel;
-           unsigned int kernel_size;
-           unsigned int padding;
+           std::size_t in_channel;
+           std::size_t out_channel;
+           std::size_t kernel_size;
+           std::size_t padding;
 
 //            Tensor<T> forward(Tensor<T> x)
 //            {
@@ -42,7 +43,7 @@ namespace ego
 //                for()
 //            }
 
-            Tensor<T> BCHW2Mat(Tensor<T> x, unsigned int kernel_size)
+            Tensor<T> BCHW2Mat(Tensor<T> x, std::size_t kernel_size)
             {
                 std::vector<std::size_t> x_shape = x.shape;
                 std::vector<std::size_t> target_BCHW_shape = x.shape;
@@ -80,7 +81,7 @@ namespace ego
 
             }
 
-            Tensor<T> pad(Tensor<T> &x, unsigned int padding_size, T padding_value)
+            Tensor<T> pad(Tensor<T> &x, std::size_t padding_size, T padding_value)
             {
                 // BCHW
                 std::vector<std::size_t> x_shape = x.shape;

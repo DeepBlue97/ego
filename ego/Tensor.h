@@ -44,8 +44,8 @@ namespace ego
 //                    this->data.push_back(value);
 //                }
 //            }
-            unsigned int ele_num = 1;
-            for (unsigned int i : shape)
+            std::size_t ele_num = 1;
+            for (std::size_t i : shape)
             {
                     ele_num *= i;
             }
@@ -91,15 +91,15 @@ namespace ego
 
         }
 
-        std::vector<unsigned int> vi2ti(unsigned int index)
+        std::vector<std::size_t> vi2ti(std::size_t index)
         {
             // vector index to tensor vector
 
-            std::vector<unsigned int> ele_nums;
+            std::vector<std::size_t> ele_nums;
 
             for (int i = 0; i<shape.size(); i++)
             {
-                unsigned int ele_num = 1;
+                std::size_t ele_num = 1;
                 for (int j = i+1; j<shape.size(); j++)
                 {
                     ele_num *= shape.at(j);
@@ -107,7 +107,7 @@ namespace ego
                 ele_nums.push_back(ele_num);
             }
 
-            std::vector<unsigned int> ti;
+            std::vector<std::size_t> ti;
             ti.reserve(shape.size());
 
             for (int i = 0; i<shape.size(); i++)
@@ -119,13 +119,13 @@ namespace ego
             return ti;
         }
 
-        unsigned int ti2vi(std::vector<unsigned int> index)
+        std::size_t ti2vi(std::vector<std::size_t> index)
         {
             // tensor index to vector index
-            unsigned int i_vector = 0;
+            std::size_t i_vector = 0;
             for (int i = 0; i<index.size(); i++)
             {
-                unsigned int ele_num = 1;
+                std::size_t ele_num = 1;
                 for (int j = i+1; j<shape.size(); j++)
                 {
                     ele_num *= shape.at(j);
@@ -135,13 +135,13 @@ namespace ego
             return i_vector;
         }
 
-        T index(std::vector<unsigned int> index)
+        T index(std::vector<std::size_t> index)
         {
             assert(index.size()==shape.size());
             return data.at(ti2vi(index));
         }
 
-        Tensor<T> transpose(unsigned int a, unsigned int b)
+        Tensor<T> transpose(std::size_t a, std::size_t b)
         {
             std::vector<std::size_t> target_shape = shape;
 
@@ -150,15 +150,15 @@ namespace ego
 
             Tensor<T> target = Tensor<T>(0, target_shape);
 
-//            std::vector<unsigned int> index;
+//            std::vector<std::size_t> index;
 //            index.reserve(target_shape.size());
 //            for (int i=0; i< target_shape.size(); i++)
 //            {
 //                index.push_back(0);
 //            }
 
-            std::vector<unsigned int> ti_old;
-            std::vector<unsigned int> ti_new;
+            std::vector<std::size_t> ti_old;
+            std::vector<std::size_t> ti_new;
 
             for(int i=0; i<data.size(); i++)
             {

@@ -38,7 +38,7 @@ namespace ego
             assert(!shape.empty());
             std::size_t count = 1;
 
-            for (unsigned int i : shape)
+            for (std::size_t i : shape)
             {
                 count = count * i;
             }

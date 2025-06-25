@@ -28,7 +28,7 @@ int main()
     tensor2.reshape(shape2);
     std::cout << tensor2 << std::endl;
 
-    float tensor2_index_value = tensor2.index(std::vector<unsigned int> {2,2});
+    float tensor2_index_value = tensor2.index(std::vector<std::size_t> {2,2});
     std::cout << "tensor2_index_value: " << tensor2_index_value << std::endl;
 
     Tensor<float> tensor2_T = Tensor<float>(0, shape2);
