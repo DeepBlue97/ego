@@ -46,12 +46,12 @@ namespace ego
 
             Tensor<T> BCHW2Mat(Tensor<T> x, unsigned int kernel_size)
             {
-                std::vector<u_int> x_shape = x.shape;
-                std::vector<u_int> target_BCHW_shape = x.shape;
+                std::vector<std::size_t> x_shape = x.shape;
+                std::vector<std::size_t> target_BCHW_shape = x.shape;
                 target_BCHW_shape.at(2) -= (kernel_size-1);
                 target_BCHW_shape.at(3) -= (kernel_size-1);
 
-                std::vector<u_int> target_shape = std::vector<u_int>{
+                std::vector<std::size_t> target_shape = std::vector<std::size_t>{
                     kernel_size * kernel_size,
                     target_BCHW_shape.at(0)
                     * target_BCHW_shape.at(1)
@@ -85,8 +85,8 @@ namespace ego
             Tensor<T> pad(Tensor<T> &x, unsigned int padding_size, T padding_value)
             {
                 // BCHW
-                std::vector<u_int> x_shape = x.shape;
-                std::vector<u_int> x_shape_padded = x_shape;
+                std::vector<std::size_t> x_shape = x.shape;
+                std::vector<std::size_t> x_shape_padded = x_shape;
 
                 std::cout << "x shape:" << x_shape_padded.at(0) << x_shape_padded.at(1) <<
                 x_shape_padded.at(2) << x_shape_padded.at(3);

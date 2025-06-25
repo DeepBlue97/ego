@@ -18,7 +18,7 @@ namespace ego
 
     public:
         std::vector<T> data;
-        std::vector<u_int> shape;
+        std::vector<std::size_t> shape;
 
     public:
 
@@ -28,18 +28,18 @@ namespace ego
             this->shape.push_back(data.size());
         };
 
-        explicit Tensor(std::vector<T> data, std::vector<u_int> shape){
+        explicit Tensor(std::vector<T> data, std::vector<std::size_t> shape){
             this->data = data;
             assert(!data.empty());
             this->shape.push_back(data.size());
             this->reshape(shape);
         };
 
-        explicit Tensor(T value, std::vector<u_int> shape){
+        explicit Tensor(T value, std::vector<std::size_t> shape){
             // 单一值和形状初始化
-//            for (u_int i : shape)
+//            for (std::size_t i : shape)
 //            {
-//                for (u_int j=0; j< ; j++)
+//                for (std::size_t j=0; j< ; j++)
 //                {
 //                    this->data.push_back(value);
 //                }
@@ -77,11 +77,11 @@ namespace ego
             return os;
         };
 
-        void reshape(const std::vector<u_int>& _shape)
+        void reshape(const std::vector<std::size_t>& _shape)
         {
             assert(!_shape.empty());
-            u_int input_size = 1;
-            for (const u_int & i: _shape)
+            std::size_t input_size = 1;
+            for (const std::size_t & i: _shape)
             {
                 input_size *= i;
             }
@@ -202,7 +202,7 @@ namespace ego
                     count_C++;
                 }
             }
-            std::vector<u_int> shape_C;
+            std::vector<std::size_t> shape_C;
             for (int i=0; i < this->shape.size()-1; i++)
             {
                 shape_C.push_back(this->shape.at(i));

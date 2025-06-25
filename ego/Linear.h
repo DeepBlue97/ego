@@ -19,18 +19,18 @@ namespace ego
 
          public:
 
-             explicit Linear(u_int input_size, u_int output_size){
+             explicit Linear(std::size_t input_size, std::size_t output_size){
 
                  using namespace ego::random;
 
                  weight_shape = {input_size, output_size};
                  weight = ego::random::tensor<T>(weight_shape);
 
-                 std::vector<u_int> bias_shape = {1, output_size};
+                 std::vector<std::size_t> bias_shape = {1, output_size};
                  bias = ego::random::tensor<T>(bias_shape);
              }
 
-             std::vector<u_int> weight_shape = {1, 1};
+             std::vector<std::size_t> weight_shape = {1, 1};
              Tensor<T> weight = ego::random::tensor<T>(weight_shape);
              Tensor<T> bias = ego::random::tensor<T>(weight_shape);
 

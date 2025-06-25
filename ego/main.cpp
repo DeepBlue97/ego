@@ -20,11 +20,11 @@ int main()
     std::cout << tensor1 << std::endl;
     std::cout << tensor2 << std::endl;
 
-    std::vector<u_int> shape1 = {3, 3};
+    std::vector<std::size_t> shape1 = {3, 3};
     tensor1.reshape(shape1);
     std::cout << tensor1 << std::endl;
 
-    std::vector<u_int> shape2 = {3, 3};
+    std::vector<std::size_t> shape2 = {3, 3};
     tensor2.reshape(shape2);
     std::cout << tensor2 << std::endl;
 
@@ -41,7 +41,7 @@ int main()
 
     std::vector<float> linear_x_data = {122,  94, 158};
     Tensor<float> linear_x(linear_x_data);
-    linear_x.reshape(std::vector<u_int> {1, 3});
+    linear_x.reshape(std::vector<std::size_t> {1, 3});
     std::cout << "linear_x: " << linear_x << std::endl;
 
 

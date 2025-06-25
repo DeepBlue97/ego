@@ -33,10 +33,10 @@ namespace ego
         }
 
         template<typename T>
-        Tensor<T> tensor(std::vector<u_int> & shape)
+        Tensor<T> tensor(std::vector<std::size_t> & shape)
         {
             assert(!shape.empty());
-            u_int count = 1;
+            std::size_t count = 1;
 
             for (unsigned int i : shape)
             {
