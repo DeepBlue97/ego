@@ -39,7 +39,7 @@ namespace ego
                 // this->kernel_size = kernel_size;
                 // this->padding = padding;
 
-                // // åˆå§‹åŒ–weightå’Œbias
+                // // ³õÊ¼»¯weightºÍbias
                 // std::vector<std::size_t> weight_shape = {out_channel, in_channel, kernel_size, kernel_size};
                 // std::vector<std::size_t> bias_shape = {out_channel};
 

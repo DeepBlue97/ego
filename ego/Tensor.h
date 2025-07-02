@@ -143,7 +143,11 @@ namespace ego
             return i_vector;
         }
 
+<<<<<<< HEAD
         T& at(std::size_t index)
+=======
+        T index(std::vector<std::size_t> index)
+>>>>>>> 62b0fcb9cb26983a8525e9f6dad9935e7e6acd4b
         {
             return data.at(index);
         }
@@ -154,7 +158,11 @@ namespace ego
             return data.at(ti2vi(index));
         }
 
+<<<<<<< HEAD
         Tensor<T> swapaxes(std::size_t a, std::size_t b)
+=======
+        Tensor<T> transpose(std::size_t a, std::size_t b)
+>>>>>>> 62b0fcb9cb26983a8525e9f6dad9935e7e6acd4b
         {
             std::vector<std::size_t> target_shape = shape;
 
