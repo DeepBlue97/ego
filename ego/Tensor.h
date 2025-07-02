@@ -253,8 +253,12 @@ namespace ego
             tensor_C.data.at(row * step_B + col) = element_dst;
         }
 
-        Tensor matmul(const Tensor<T> tensor_B)
+        Tensor matmul(const Tensor<T>& tensor_B)
         {
+
+            /*
+            先reshape 为2维矩阵再进行矩阵乘法
+            */
 
             assert(this->shape.back() == tensor_B.shape.front());
 
@@ -271,8 +275,19 @@ namespace ego
             Tensor<T> tensor_C(0, shape_C);
 
             size_t bundleRowCount_A = this->data.size() / this->shape.back();
+            size_t bundleColCount_B = tensor_B.data.size() / tensor_B.shape.front();
+
             size_t step_B = tensor_B.data.size() / tensor_B.shape.front();
             size_t count_C = 0;
+
+
+            for(size_t i = 0; i < bundleRowCount_A; i+= this->shape.back())
+            {
+                for(size_t j = 0; j < step_B; j++)
+                {
+                    
+                }
+            }
 
             // size_t num_threads = std::thread::hardware_concurrency();
 
