@@ -28,13 +28,17 @@ int main()
     tensor2.reshape(shape2);
     std::cout << tensor2 << std::endl;
 
-    float tensor2_index_value = tensor2.index(std::vector<unsigned int> {2,2});
+    std::cout << "index: " << std::endl;
+    float tensor2_index_value = tensor2.at(std::vector<std::size_t> {2,2});
     std::cout << "tensor2_index_value: " << tensor2_index_value << std::endl;
 
+    std::cout << "swapaxes: " << std::endl;
     Tensor<float> tensor2_T = Tensor<float>(0, shape2);
-    tensor2_T = tensor2.transpose(0,1);
-    std::cout << "tensor2_T: " << tensor2_T << std::endl;
+    std::cout << "before swapaxes tensor2: " << tensor2 << std::endl;
+    tensor2_T = tensor2.swapaxes(0, 1);
+    std::cout << "after swapaxes tensor2_T: " << tensor2_T << std::endl;
 
+    std::cout << "matmul: " << std::endl;
     Tensor<float> tensor3 = tensor1.matmul(tensor2);
     std::cout << tensor3 << std::endl;
 
@@ -51,17 +55,20 @@ int main()
 
 //    Tensor<float> y = linear_1.forward(tensor3);
 //        linear_1.forward(tensor3);
+    std::cout << "a.forward(b): " << std::endl;
     Tensor<float> linear_out = linear_1.forward(linear_x);
     std::cout << "linear_x: " << linear_x << std::endl;
     std::cout << "linear_out: " << linear_out << std::endl;
 
+    std::cout << "forward(a, b): " << std::endl;
     linear_out = linear_1.forward(linear_x, linear_x);
     std::cout << "linear_out: " << linear_out << std::endl;
     std::cout << "linear_x: " << linear_x << std::endl;
 
 
-    ego::nn::ReLU<float> relu_1 = ego::nn::ReLU<float>();
+    std::cout << "nn::ReLU: " << std::endl;
 
+    ego::nn::ReLU<float> relu_1 = ego::nn::ReLU<float>();
     relu_1.forward(linear_x, linear_x);
 
     std::cout << "linear_x: " << linear_x << std::endl;

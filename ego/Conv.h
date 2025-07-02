@@ -1,4 +1,4 @@
-//
+// Conv.h
 // Created by peter on 5/16/24.
 //
 
@@ -8,41 +8,103 @@
 #include "Tensor.h"
 //#include "cstdlib"
 #include <cmath>
+
 namespace ego
 {
     namespace nn
     {
         template<typename T>
         class Conv2d {
-            Conv2d(unsigned int in_channel, unsigned int out_channel, unsigned int kernel_size, unsigned int padding)
+        public:
+
+
+            // explicit Conv2d(std::size_t in_channel, std::size_t out_channel, std::size_t kernel_size, std::size_t padding)
+            //     : in_channel(in_channel),
+            //     out_channel(out_channel),
+            //     kernel_size(kernel_size),
+            //     padding(padding),
+            //     weight(Tensor<T>(0, {out_channel, in_channel, kernel_size, kernel_size})),
+            //     bias(Tensor<T>(0, {out_channel})) {}
+
+            Conv2d(std::size_t in_channel, std::size_t out_channel, std::size_t kernel_size, std::size_t padding)
+                : in_channel(in_channel),
+                out_channel(out_channel),
+                kernel_size(kernel_size),
+                padding(padding),
+                weight(Tensor<T>(0, {out_channel, in_channel, kernel_size, kernel_size})),
+                bias(Tensor<T>(0, {out_channel})) 
             {
-                this->in_channel = in_channel;
-                this->out_channel = out_channel;
-                this->kernel_size = kernel_size;
-                this->padding = padding;
+                // this->in_channel = in_channel;
+                // this->out_channel = out_channel;
+                // this->kernel_size = kernel_size;
+                // this->padding = padding;
 
+                // // 初始化weight和bias
+                // std::vector<std::size_t> weight_shape = {out_channel, in_channel, kernel_size, kernel_size};
+                // std::vector<std::size_t> bias_shape = {out_channel};
 
+                // weight = Tensor<T>(0, weight_shape);
+                // bias = Tensor<T>(0, bias_shape);
             }
 
-            Tensor<T> weight;
-            Tensor<T> bias;
+            Tensor<T> weight; // O I H W
+            Tensor<T> bias; // O H W
 
-//            Tensor<T> padded;
-//
-//            Tensor<T> target;
+            std::size_t in_channel;
+            std::size_t out_channel;
+            std::size_t kernel_size;
+            std::size_t padding;
 
-           unsigned int in_channel;
-           unsigned int out_channel;
-           unsigned int kernel_size;
-           unsigned int padding;
+            Tensor<T> forward(Tensor<T> x)
+            {
+                // weight * x + bias
+                // weight: O I H W
+                // x     : B C H W
+                // bias  : O H W
 
-//            Tensor<T> forward(Tensor<T> x)
-//            {
-//                // Batch, Channel, Height, Width
-//                for()
-//            }
+                // Batch
+                // for (size_t b = 0; b < x.shape[0]; b++)
+                // {
+                //     // Height
+                //     for (size_t h = (this->kernel_size-1)/2; h < x.shape[2]-(this->kernel_size-1)/2; h++)
+                //     {
+                //         // Width
+                //         for (size_t w = (this->kernel_size-1)/2; w < x.shape[2]-(this->kernel_size-1)/2; w++)
+                //         {
 
-            Tensor<T> BCHW2Mat(Tensor<T> x, unsigned int kernel_size)
+                //             Tensor cur_t = x.slice(std::vector<std::size_t>{
+                //                 b, b+1,
+                //                 0, x.shape.at(1),
+                //                 h-(this->kernel_size-1)/2, h+(this->kernel_size-1)/2+1, 
+                //                 w-(this->kernel_size-1)/2, w+(this->kernel_size-1)/2+1
+                //             })
+
+                //             this->weight.matmul(cur_t);
+
+                //             Tensor<T> mat = BCHW2Mat(x, this->kernel_size);
+
+                //             // // Out Channel
+                //             // for (size_t co = 0; co < out_channel; co++)
+                //             // {
+                //             //     // In Channel
+                //             //     for (size_t ci = 0; ci < in_channel; ci++)
+                //             //     {
+                //             //         // Kernel
+                //             //         for (size_t kh = 0; kh < this->kernel_size; kh++)
+                //             //         {
+                //             //             for (size_t kw = 0; kw < this->kernel_size; kw++)
+                //             //             {
+
+                //             //             }
+                //             //         }
+                //             //     }
+                //             // }
+                //         }
+                //     }
+                // }
+            }
+
+            Tensor<T> BCHW2Mat(Tensor<T> x, std::size_t kernel_size)
             {
                 std::vector<std::size_t> x_shape = x.shape;
                 std::vector<std::size_t> target_BCHW_shape = x.shape;
@@ -80,7 +142,7 @@ namespace ego
 
             }
 
-            Tensor<T> pad(Tensor<T> &x, unsigned int padding_size, T padding_value)
+            Tensor<T> pad(Tensor<T> &x, std::size_t padding_size, T padding_value)
             {
                 // BCHW
                 std::vector<std::size_t> x_shape = x.shape;
